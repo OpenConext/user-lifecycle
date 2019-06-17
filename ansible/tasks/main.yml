@@ -9,9 +9,13 @@
 - name: Install common packages
   yum: name={{item}} state=present
   with_items:
+  - yum-utils
   - vim
   - composer
   - git
+
+- name: enable remi-php72
+  shell: yum-config-manager --enable remi-php72
 
 - name: Install php-(cli,fpm, ..)
   yum: name={{item}} state=present
